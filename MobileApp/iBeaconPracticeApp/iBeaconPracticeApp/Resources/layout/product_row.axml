@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:minWidth="25px"
+    android:minHeight="25px"
+    android:padding="5px">
+    <FFImageLoading.Views.ImageViewAsync
+        android:id="@+id/imageView"
+        android:layout_width="200px"
+        android:layout_height="150px"
+        android:layout_margin="5px"
+        android:scaleType="fitXY" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:layout_margin="5px"
+        android:layout_width="500px">
+        <TextView
+            android:id="@+id/tv_name"
+            android:text="Product Name"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10px" />
+        <TextView
+            android:id="@+id/tv_discount"
+            android:text="Discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout3"
+        android:layout_margin="5px">
+        <TextView
+            android:id="@+id/tv_price"
+            android:text="Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10px" />
+        <TextView
+            android:id="@+id/tv_region"
+            android:text="Region"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

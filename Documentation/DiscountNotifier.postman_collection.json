@@ -1,0 +1,462 @@
+{
+	"info": {
+		"name": "DiscountNotifier",
+		"_postman_id": "9421396f-3334-13d8-e7f8-654f218145af",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login copy",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "Admin",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Admin@6010",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://careme-surveypart2.azurewebsites.net/oauth2/token",
+					"protocol": "http",
+					"host": [
+						"careme-surveypart2",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"oauth2",
+						"token"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Regions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://discountnotifier1.azurewebsites.net/api/Regions",
+					"protocol": "http",
+					"host": [
+						"discountnotifier1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Regions"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Discounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://discountnotifier1.azurewebsites.net/api/Discounts",
+					"protocol": "http",
+					"host": [
+						"discountnotifier1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Discounts"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post Region",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "RegionId",
+							"value": "5",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "RegionName",
+							"value": "Library",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "BeaconId",
+							"value": "5ab",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "StoreKeeperName",
+							"value": "Librarian",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://discountnotifier1.azurewebsites.net/api/Regions",
+					"protocol": "http",
+					"host": [
+						"discountnotifier1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Regions"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "Usha",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Usha@ssdi",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "RegionId",
+							"value": "5",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Name",
+							"value": "Ushaswini VVR",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Email",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://discountnotifier1.azurewebsites.net/api/Users",
+					"protocol": "http",
+					"host": [
+						"discountnotifier1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Users"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://discountnotifier1.azurewebsites.net/api/Users",
+					"protocol": "http",
+					"host": [
+						"discountnotifier1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Users"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetStoreKeepers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://discountnotifier1.azurewebsites.net/api/Users/GetStoreKeepers",
+					"protocol": "http",
+					"host": [
+						"discountnotifier1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Users",
+						"GetStoreKeepers"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "AddStoreKeeper",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "Storekeeper-13",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Storekeeper11@ssdi",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "RegionId",
+							"value": "6",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Name",
+							"value": "Store keeper - 7",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Email",
+							"value": "storekeepr11@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "confirmpassword",
+							"value": "Storekeeper11@ssdi",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://discountnotifier1.azurewebsites.net/api/Account/AddStoreKeeper",
+					"protocol": "http",
+					"host": [
+						"discountnotifier1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Account",
+						"AddStoreKeeper"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Grocery Discounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://discountnotifier1.azurewebsites.net/api/Discounts?regionName=Grocery",
+					"protocol": "http",
+					"host": [
+						"discountnotifier1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Discounts"
+					],
+					"query": [
+						{
+							"key": "regionName",
+							"value": "Grocery",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Region",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "RegionId",
+							"value": "1",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "RegionName",
+							"value": "Admin",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "BeaconId",
+							"value": "1",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "StoreKeeperName",
+							"value": "Admin",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://discountnotifier1.azurewebsites.net/api/Regions/17",
+					"protocol": "http",
+					"host": [
+						"discountnotifier1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Regions",
+						"17"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Produce Discounts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://discountnotifier1.azurewebsites.net/api/Discounts?regionName=Produce",
+					"protocol": "http",
+					"host": [
+						"discountnotifier1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Discounts"
+					],
+					"query": [
+						{
+							"key": "regionName",
+							"value": "Produce",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
