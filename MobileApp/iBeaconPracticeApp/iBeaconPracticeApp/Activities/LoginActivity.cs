@@ -96,13 +96,31 @@ namespace iBeaconPracticeApp
 
 
                             client.DefaultRequestHeaders.Add("Authorization", "Bearer" + resultObject.Access_Token);
-                            var profile = await client.GetAsync(Constants.GETUSERINFO_URL);
+                            var profile = await client.GetAsync(String.Format(Constants.GETUSERINFO_URL,resultObject.Access_Token));
 
                             var jsonProfile = await profile.Content.ReadAsStringAsync();
 
+                            var user = JsonConvert.DeserializeObject<UserInfoModel>(jsonProfile);
 
+                            user.DeviceId = prefs.GetString(Constants.DEVICEID, "");
+
+
+                            var model = new DeviceIdModel
+                            {
+                                UserId = user.Id,
+                                DeviceId = user.DeviceId 
+                            };
+
+                            
+                            await client.PostAsync(Constants.UPDATE_DEVICEID_URL, new FormUrlEncodedContent(model.ToDict()));
+                            
                             prefEditor.PutString(Constants.AUTH_HEADER, "Bearer" + resultObject.Access_Token);
-                            prefEditor.PutString(Constants.USER_PROFILE, jsonProfile);
+                            prefEditor.PutString(Constants.USERID, user.Id);
+                            prefEditor.PutString(Constants.USERNAME, user.Username);
+                            prefEditor.PutString(Constants.EMAIL, user.Email);
+                            prefEditor.PutInt(Constants.REGIONID, user.RegionId);
+                            prefEditor.PutString(Constants.DEVICEID, user.DeviceId);
+                            prefEditor.PutString(Constants.FULLNAME, user.Fullname);
                             prefEditor.Apply();
 
                             //move to discount page

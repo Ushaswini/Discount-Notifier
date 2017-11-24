@@ -23,21 +23,24 @@
         android:layout_height="wrap_content"
         android:id="@+id/tvEmail"
         android:hint="Email"
-        android:layout_margin="20dp" />
+        android:layout_margin="20dp"
+        android:inputType="textEmailAddress" />
     <EditText
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvPassword"
         android:hint="Password"
-        android:layout_margin="20dp" />
+        android:layout_margin="20dp"
+        android:inputType="textPassword" />
     <EditText
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvConfirmPassword"
         android:hint="Confirm Password"
-        android:layout_margin="20dp" />
+        android:layout_margin="20dp"
+        android:inputType="textPassword" />
     <Button
         android:text="Register"
         android:layout_width="match_parent"

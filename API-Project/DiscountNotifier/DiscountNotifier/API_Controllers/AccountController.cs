@@ -18,6 +18,7 @@ using DiscountNotifier.Providers;
 using DiscountNotifier.Results;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.IdentityModel.Tokens;
 
 namespace DiscountNotifier.Controllers
 {
@@ -67,7 +68,25 @@ namespace DiscountNotifier.Controllers
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
             };
         }
+        [AllowAnonymous]
+        [Route("UserInfo")]
+        public UserInfoViewModel GetUserInfo(string token)
+        {
+            JwtSecurityToken tok = new JwtSecurityToken(token);
+            string currentUserId = tok.Claims.Where(x => x.Type == "unique_name").FirstOrDefault().Value;
+            var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var currentUser = manager.FindById(currentUserId);
+            var model = new UserInfoViewModel
+            {
+                Email = currentUser.Email,
+                RegionId= currentUser.RegionId,
+                Id = currentUser.Id,
+                Username = currentUser.UserName,
+                Fullname = currentUser.Name
 
+            };
+            return model;
+        }
         // POST api/Account/Logout
         [Route("Logout")]
         public IHttpActionResult Logout()
@@ -339,6 +358,8 @@ namespace DiscountNotifier.Controllers
                 {
                     return GetErrorResult(result);
                 }
+                //Add to role
+                UserManager.AddToRole(user.Id, "User");
             }
             catch (DbEntityValidationException ex)
             {

@@ -244,11 +244,12 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="API_Controllers\AccountController.cs" />
-    <Compile Include="Controllers\DiscountsController.cs" />
+    <Compile Include="API_Controllers\DiscountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RegionsController.cs" />
-    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="API_Controllers\RegionsController.cs" />
+    <Compile Include="API_Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="DTOs\DiscountDTO.cs" />
     <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -262,6 +263,10 @@
     <Compile Include="Migrations\201711210122109_CorrectedDiscount.cs" />
     <Compile Include="Migrations\201711210122109_CorrectedDiscount.Designer.cs">
       <DependentUpon>201711210122109_CorrectedDiscount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711231624498_DeviceId.cs" />
+    <Compile Include="Migrations\201711231624498_DeviceId.Designer.cs">
+      <DependentUpon>201711231624498_DeviceId.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -360,6 +365,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711210122109_CorrectedDiscount.resx">
       <DependentUpon>201711210122109_CorrectedDiscount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711231624498_DeviceId.resx">
+      <DependentUpon>201711231624498_DeviceId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

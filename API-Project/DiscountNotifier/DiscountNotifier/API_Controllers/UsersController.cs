@@ -78,6 +78,66 @@ namespace DiscountNotifier.Controllers
             return users.ToList();
         }
 
+        [Route("UpdateRegionId")]
+        public IHttpActionResult PostRegionId(RegionIdModel user)
+        {
+            var userToModify = db.Users.Where(u => u.Id == user.UserId).FirstOrDefault();
+            if (userToModify == null)
+            {
+                return NotFound();
+            }
+            userToModify.RegionId = user.RegionId;
+            db.Entry(userToModify).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ApplicationUserExists(user.UserId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return Ok(user);
+        }
+
+        [Route("UpdateDeviceId")]
+        [ResponseType(typeof(DeviceIdModel))]
+        public IHttpActionResult PostDeviceId(DeviceIdModel user)
+        {
+            var userToModify = db.Users.Where(u => u.Id == user.UserId).FirstOrDefault();
+            if (userToModify == null)
+            {
+                return NotFound();
+            }
+            userToModify.DeviceId = user.DeviceId;
+            db.Entry(userToModify).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ApplicationUserExists(user.UserId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return Ok(user);
+        }
         // GET: api/Users/5
         [ResponseType(typeof(ApplicationUser))]
         public IHttpActionResult GetApplicationUser(string id)
@@ -246,5 +306,7 @@ namespace DiscountNotifier.Controllers
         {
             return db.Users.Count(e => e.Id == id) > 0;
         }
+
+
     }
 }

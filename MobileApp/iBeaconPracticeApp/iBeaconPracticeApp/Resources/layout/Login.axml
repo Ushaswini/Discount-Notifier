@@ -13,7 +13,8 @@
         p1:id="@+id/tvUsername"
         p1:textAlignment="center"
         p1:hint="Username"
-        p1:layout_margin="20dp" />
+        p1:layout_margin="20dp"
+        p1:inputType="textEmailAddress" />
     <EditText
         p1:textAppearance="?android:attr/textAppearanceMedium"
         p1:layout_width="match_parent"
@@ -21,7 +22,8 @@
         p1:id="@+id/tvPassword"
         p1:textAlignment="center"
         p1:hint="Password"
-        p1:layout_margin="20dp" />
+        p1:layout_margin="20dp"
+        p1:inputType="textPassword" />
     <Button
         p1:text="Login"
         p1:layout_width="match_parent"

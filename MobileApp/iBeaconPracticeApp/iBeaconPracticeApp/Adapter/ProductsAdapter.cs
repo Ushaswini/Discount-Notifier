@@ -64,8 +64,8 @@ namespace iBeaconPracticeApp
             
             var item = Products[position];
             holder.Name.Text = item.Name;
-            holder.Discount.Text = item.Discount;
-            holder.Price.Text = Java.Lang.String.Format("{0:C}", item.Price);
+            holder.Discount.Text = item.Discount + "%";
+            holder.Price.Text = String.Format("{0:C}", item.Price) + "$";
             holder.Region.Text = item.Region;
             
             ImageService.Instance

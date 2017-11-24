@@ -14,6 +14,8 @@ namespace DiscountNotifier.Models
         
         public int RegionId { get; set; }
         public string Name { get; set; }
+
+        public string DeviceId { get; set; }
         //Navigation
         public Region Region { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)

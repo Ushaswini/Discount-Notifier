@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "Login copy",
+			"name": "Login",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -27,23 +27,23 @@
 						},
 						{
 							"key": "username",
-							"value": "Admin",
+							"value": "StoreKeep1",
 							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "Admin@6010",
+							"value": "StoreKeeper1@SSDI",
 							"description": "",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://careme-surveypart2.azurewebsites.net/oauth2/token",
+					"raw": "http://discountnotifier1.azurewebsites.net/oauth2/token",
 					"protocol": "http",
 					"host": [
-						"careme-surveypart2",
+						"discountnotifier1",
 						"azurewebsites",
 						"net"
 					],
@@ -289,7 +289,7 @@
 						},
 						{
 							"key": "password",
-							"value": "Storekeeper11@ssdi",
+							"value": "Storekeeper13@ssdi",
 							"description": "",
 							"type": "text"
 						},
@@ -301,19 +301,19 @@
 						},
 						{
 							"key": "Name",
-							"value": "Store keeper - 7",
+							"value": "Store keeper - 13",
 							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "Email",
-							"value": "storekeepr11@gmail.com",
+							"value": "storekeepr13@gmail.com",
 							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "confirmpassword",
-							"value": "Storekeeper11@ssdi",
+							"value": "Storekeeper13@ssdi",
 							"description": "",
 							"type": "text"
 						}
@@ -429,6 +429,67 @@
 			"response": []
 		},
 		{
+			"name": "Delete Discount",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "RegionId",
+							"value": "1",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "RegionName",
+							"value": "Admin",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "BeaconId",
+							"value": "1",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "StoreKeeperName",
+							"value": "Admin",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://discountnotifier1.azurewebsites.net/api/Discounts/17",
+					"protocol": "http",
+					"host": [
+						"discountnotifier1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Discounts",
+						"17"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
 			"name": "Get Produce Discounts",
 			"request": {
 				"method": "GET",
@@ -452,6 +513,236 @@
 							"value": "Produce",
 							"equals": true
 						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Info",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://discountnotifier1.azurewebsites.net/api/Account/UserInfo?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6IjNiNmE4NGU4LTI4MzUtNDMxNS05MmNlLTk5NmEyNjk5ODFlMSIsInN1YiI6IlN0b3JlS2VlcDEiLCJyb2xlIjoiU3RvcmVLZWVwZXIiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAvIiwiYXVkIjoiNDE0ZTE5MjdhMzg4NGY2OGFiYzc5ZjcyODM4MzdmZDEiLCJleHAiOjE1MTE0OTYxNzQsIm5iZiI6MTUxMTQwOTc3NH0.1TFBtwWEqyGrnu60sEQKFbe_9OSlO7jeMlxhzc5Hs0U",
+					"protocol": "http",
+					"host": [
+						"discountnotifier1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Account",
+						"UserInfo"
+					],
+					"query": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1bmlxdWVfbmFtZSI6IjNiNmE4NGU4LTI4MzUtNDMxNS05MmNlLTk5NmEyNjk5ODFlMSIsInN1YiI6IlN0b3JlS2VlcDEiLCJyb2xlIjoiU3RvcmVLZWVwZXIiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMDAvIiwiYXVkIjoiNDE0ZTE5MjdhMzg4NGY2OGFiYzc5ZjcyODM4MzdmZDEiLCJleHAiOjE1MTE0OTYxNzQsIm5iZiI6MTUxMTQwOTc3NH0.1TFBtwWEqyGrnu60sEQKFbe_9OSlO7jeMlxhzc5Hs0U",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post discount",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "Id",
+							"value": "10",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "RegionId",
+							"value": "4",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "OfferText",
+							"value": "Winter coats!!",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Price",
+							"value": "100",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "DiscountPercent",
+							"value": "10",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "ImageUrl",
+							"value": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fimage.flaticon.com%2Ficons%2Fsvg%2F126%2F126467.svg&imgrefurl=https%3A%2F%2Fwww.flaticon.com%2Ffree-icon%2Flogout_126467&docid=oWNIfwkMf6CesM&tbnid=c0ce8xNf17ioUM%3A&vet=10ahUKEwjfiJWB6dPXAhUxY98KHUvqDqkQMwjWASgAMAA..i&w=800&h=800&bih=734&biw=1536&q=logout%20icon&ved=0ahUKEwjfiJWB6dPXAhUxY98KHUvqDqkQMwjWASgAMAA&iact=mrc&uact=8",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://discountnotifier1.azurewebsites.net/api/Discounts",
+					"protocol": "http",
+					"host": [
+						"discountnotifier1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Discounts"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GetDiscountsforRegionId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://discountnotifier1.azurewebsites.net/api/Discounts?regionId=4",
+					"protocol": "http",
+					"host": [
+						"discountnotifier1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Discounts"
+					],
+					"query": [
+						{
+							"key": "regionId",
+							"value": "4",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "RegisterUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "UserName",
+							"value": "UserSSDI",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Email",
+							"value": "userssdi@gmail.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Password",
+							"value": "UserSSDI1@",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "ConfirmPassword",
+							"value": "UserSSDI1@",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "RegionId",
+							"value": "4",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "Name",
+							"value": "UserSSDI",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://discountnotifier1.azurewebsites.net/api/Account/Register",
+					"protocol": "http",
+					"host": [
+						"discountnotifier1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Account",
+						"Register"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Edit discount with id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"id\":18,\r\n\"regionid\":4,\r\n\"offertext\":\"Test discount edited\",\r\n\"price\":\"5\",\r\n\"discountpercent\" : \"10\",\r\n\"imageurl\":\"https://www.google.com/imgres?imgurl=https%3A%2F%2Fimage.flaticon.com%2Ficons%2Fsvg%2F126%2F126467.svg&imgrefurl=https%3A%2F%2Fwww.flaticon.com%2Ffree-icon%2Flogout_126467&docid=oWNIfwkMf6CesM&tbnid=c0ce8xNf17ioUM%3A&vet=10ahUKEwjfiJWB6dPXAhUxY98KHUvqDqkQMwjWASgAMAA..i&w=800&h=800&bih=734&biw=1536&q=logout%20icon&ved=0ahUKEwjfiJWB6dPXAhUxY98KHUvqDqkQMwjWASgAMAA&iact=mrc&uact=8\"\r\n}"
+				},
+				"url": {
+					"raw": "http://discountnotifier1.azurewebsites.net/api/Discounts/18",
+					"protocol": "http",
+					"host": [
+						"discountnotifier1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Discounts",
+						"18"
 					]
 				},
 				"description": ""

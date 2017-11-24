@@ -14,8 +14,14 @@ namespace iBeaconPracticeApp.Models
 {
     public class UserInfoModel
     {
-        public string UserName { get; set; }
-        public string Name { get; set; }
+        public string Username { get; set; }
+        public string Fullname { get; set; }
+
+        public string Id { get; set; }
+        public int RegionId { get; set; }
+
+        public string Email { get; set; }
+        public string DeviceId { get; set; }
     }
     public class LoginModel
     {
@@ -30,6 +36,24 @@ namespace iBeaconPracticeApp.Models
             parameters.Add("username", this.UserName);
             parameters.Add("password", this.Password);
             parameters.Add("grant_type", this.GrantType);           
+
+            return parameters;
+        }
+    }
+
+    public class DeviceIdModel
+    {
+        public string DeviceId { get; set; }
+        public string UserId { get; set; }
+
+        public Dictionary<string, string> ToDict()
+        {
+
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+
+            parameters.Add("DeviceId", this.DeviceId);
+            parameters.Add("UserId", this.UserId);
+            
 
             return parameters;
         }

@@ -37,8 +37,20 @@ namespace iBeaconPracticeApp
         public static readonly string LOGIN_URL = BASE_URL + "/oauth2/token";
 
         public static readonly string GETUSERINFO_URL = BASE_URL + "/api/Account/UserInfo?token={0}";
+
         public static readonly string AUTH_HEADER = "token";
-        public static readonly string USER_PROFILE = "currentuser";
+        public static readonly string USERNAME = "username";
+        public static readonly string FULLNAME = "fullname";
+        public static readonly string USERID = "userid";
+        public static readonly string DEVICEID = "deviceid";
+        public static readonly string EMAIL = "email";
+        public static readonly string REGIONID = "regionid";
+
         public static readonly string REGISTERUSER_URL = BASE_URL + "/api/Account/Register";
+        public static readonly string LOGOUTUSER_URL = BASE_URL + "/api/Account/Logout";
+        public static readonly string UPDATE_DEVICEID_URL = BASE_URL + "/api/Users/UpdateDeviceId";
+        public static readonly string GETREGIONS_URL = BASE_URL + "/api/Regions";
+        public static readonly string UPDATE_REGIONID_URL = BASE_URL + "/api/Users/UpdateRegionId";
+
     }
 }

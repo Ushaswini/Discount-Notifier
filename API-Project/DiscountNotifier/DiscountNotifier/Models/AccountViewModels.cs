@@ -24,11 +24,25 @@ namespace DiscountNotifier.Models
 
         public IEnumerable<ExternalLoginViewModel> ExternalLoginProviders { get; set; }
     }
+    public class DeviceIdModel
+    {
+        public string DeviceId { get; set; }
+        public string UserId { get; set; }
+    }
 
+    public class RegionIdModel
+    {
+        public int RegionId { get; set; }
+        public string UserId { get; set; }
+    }
     public class UserInfoViewModel
     {
         public string Email { get; set; }
 
+        public int RegionId { get; set; }
+        public string Username { get; set; }
+        public string Fullname { get; set; }
+        public string Id { get; set; }
         public bool HasRegistered { get; set; }
 
         public string LoginProvider { get; set; }

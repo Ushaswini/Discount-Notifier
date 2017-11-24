@@ -11,6 +11,11 @@ using static EstimoteSdk.Utils;
 using System;
 using System.Linq;
 using Android.Util;
+using Android.Views;
+using Android.Preferences;
+using Android.Content;
+using Firebase.Iid;
+using System.Net.Http.Headers;
 
 namespace iBeaconPracticeApp
 {
@@ -30,7 +35,14 @@ namespace iBeaconPracticeApp
 
         ListView lv;
         List<Product> Products;
+        List<BeaconRegion> Regions;
         ProductsAdapter adapter;
+
+        ISharedPreferences prefs;
+        ISharedPreferencesEditor prefEditor;
+
+        string Auth_Header = "";
+        int FavoriteRegionId;
 
         protected async override void OnCreate(Bundle bundle)
         {
@@ -40,8 +52,12 @@ namespace iBeaconPracticeApp
             SetContentView (Resource.Layout.Main);
 
             Init();
+            SetIcon();
+            Log.Debug("app-id", "google app id: " + GetString(Resource.String.google_app_id));
+            // Log.Debug("demo", "InstanceID token: " + FirebaseInstanceId.Instance.Token);
 
             await GetDataAsync("");
+            await GetRegionsAsync();
 
         }        
 
@@ -50,6 +66,132 @@ namespace iBeaconPracticeApp
             base.OnResume();
             SystemRequirementsChecker.CheckWithDefaultDialogs(this);
             _beaconManager.Connect(this);
+        }
+
+        private async Task GetRegionsAsync()
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                var data = await client.GetStringAsync(Constants.GETREGIONS_URL);
+                Regions = JsonConvert.DeserializeObject<List<BeaconRegion>>(data);
+            }catch(Exception e)
+            {
+                Console.Write(e.Message);
+            }
+            
+
+        }
+        private async Task LogoutAsync()
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Add("Authorization", Auth_Header);
+
+                var result = await client.PostAsync(Constants.LOGOUTUSER_URL, null);
+
+                var jsonResult = result.Content.ReadAsStringAsync();
+
+                prefEditor.Remove(Constants.AUTH_HEADER);
+                prefEditor.Remove(Constants.DEVICEID);
+                prefEditor.Remove(Constants.USERID);
+                prefEditor.Remove(Constants.USERNAME);
+                prefEditor.Remove(Constants.EMAIL);
+                prefEditor.Remove(Constants.FULLNAME);
+                prefEditor.Remove(Constants.REGIONID);
+                prefEditor.Apply();
+
+                Intent intent = new Intent(this, typeof(LoginActivity));
+                intent.SetFlags(ActivityFlags.ClearTask | ActivityFlags.NewTask);
+                StartActivity(intent);
+
+            }
+            catch (Exception exp)
+            {
+                Toast.MakeText(this, exp.Message, ToastLength.Short).Show();
+            }
+        }
+        public override  bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.action_logout:
+                    LogoutAsync();
+                    break;
+                case Resource.Id.action_favorite:
+                    GetRegionsAsync();
+                    ShowDialog();
+                    break;
+            }
+            
+            return base.OnOptionsItemSelected(item);
+        }
+        private async Task UpdateRegionIdAsync(int regionId)
+        {
+            using (var client = new HttpClient())
+            {
+                var model = new RegionIdModel
+                {
+                    RegionId = regionId,
+                    UserId = prefs.GetString(Constants.USERID, "")
+                };
+
+                try
+                {
+                    HttpResponseMessage result = await client.PostAsync(Constants.UPDATE_REGIONID_URL, new FormUrlEncodedContent(model.ToDict()));
+
+                    if (result.IsSuccessStatusCode)
+                    {
+                        Toast.MakeText(this, "", ToastLength.Short).Show();
+                        prefEditor.PutInt(Constants.REGIONID, regionId);
+                        prefEditor.Apply();
+
+                    }
+                    else
+                    {
+                        Console.Write(result.StatusCode);
+                    }
+                }
+                catch (Exception exp)
+                {
+                }
+            }
+        }
+        private void ShowDialog()
+        {
+           
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.SetTitle("Select favorite region. Don't miss deals in your favorite region!");
+           // builder.SetMessage("Don't miss deals in your favorite region!");
+
+            builder.SetPositiveButton("Save", async (sender, e) =>
+            {
+                await UpdateRegionIdAsync(FavoriteRegionId);
+            });
+            builder.SetNegativeButton("Cancel", (sender, e) => { });
+
+            string[] regions = Regions.Select(i => i.ToString()).ToArray();
+            int favId = prefs.GetInt(Constants.REGIONID, 0);
+            var reg = Regions.Where(r => r.RegionId.Equals(favId)).FirstOrDefault();
+            int index = Regions.IndexOf(reg);
+
+
+            builder.SetSingleChoiceItems(regions, index, (sender,e) => {
+                Console.Write(e.Which);
+                FavoriteRegionId = Regions[e.Which].RegionId;
+            });
+
+            AlertDialog dialog = builder.Create();
+            dialog.Show();
+        }
+
+       
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            this.MenuInflater.Inflate(Resource.Menu.menu, menu);
+            return base.OnCreateOptionsMenu(menu);
         }
 
         public void OnServiceReady()
@@ -81,10 +223,14 @@ namespace iBeaconPracticeApp
         protected  void Init()
         {
             // GetDataAsync("");
+            prefs = PreferenceManager.GetDefaultSharedPreferences(this);
+            Auth_Header = prefs.GetString(Constants.AUTH_HEADER, "");
+            prefEditor = prefs.Edit();
 
             lv = FindViewById<ListView>(Resource.Id.listView);
 
             Products = new List<Product>();
+            Regions = new List<BeaconRegion>();
 
             adapter = new ProductsAdapter(this, Products);
 
@@ -181,7 +327,7 @@ namespace iBeaconPracticeApp
                     message = "All items";
                 }
 
-                Toast.MakeText(this, message, ToastLength.Short).Show();
+                //Toast.MakeText(this, message, ToastLength.Short).Show();
 
                 HttpClient client = new HttpClient();
                 var data = await client.GetStringAsync(url);
@@ -197,6 +343,14 @@ namespace iBeaconPracticeApp
             }
             
             
+        }
+
+        private void SetIcon()
+        {
+            ActionBar.SetDisplayOptions(ActionBarDisplayOptions.ShowTitle, ActionBarDisplayOptions.UseLogo);
+            ActionBar.SetDisplayShowHomeEnabled(true);
+            ActionBar.SetLogo(Resource.Drawable.Icon);
+            ActionBar.SetDisplayUseLogoEnabled(true);
         }
     }
 }

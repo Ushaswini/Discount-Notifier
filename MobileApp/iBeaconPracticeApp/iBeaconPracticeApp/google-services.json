@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1008556843671",
+    "firebase_url": "https://discountnotifier.firebaseio.com",
+    "project_id": "discountnotifier",
+    "storage_bucket": "discountnotifier.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008556843671:android:e526ba7a9b684d86",
+        "android_client_info": {
+          "package_name": "edu.uncc.discountnotifier"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1008556843671-fd7vn3v8b08sp763lbjls3b56df01m76.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0j8OxxDyBU5NKqXnDGUINtj1wunzmHM0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
