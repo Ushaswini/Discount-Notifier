@@ -196,11 +196,11 @@ namespace iBeaconPracticeApp
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f09001a
-			public const int action_favorite = 2131296282;
+			// aapt resource value: 0x7f090019
+			public const int action_favorite = 2131296281;
 			
-			// aapt resource value: 0x7f09001b
-			public const int action_logout = 2131296283;
+			// aapt resource value: 0x7f09001a
+			public const int action_logout = 2131296282;
 			
 			// aapt resource value: 0x7f090000
 			public const int adjust_height = 2131296256;
@@ -244,20 +244,17 @@ namespace iBeaconPracticeApp
 			// aapt resource value: 0x7f090002
 			public const int none = 2131296258;
 			
-			// aapt resource value: 0x7f090016
-			public const int radio_group = 2131296278;
-			
 			// aapt resource value: 0x7f090004
 			public const int standard = 2131296260;
 			
-			// aapt resource value: 0x7f090019
-			public const int tvConfirmPassword = 2131296281;
-			
 			// aapt resource value: 0x7f090018
-			public const int tvEmail = 2131296280;
+			public const int tvConfirmPassword = 2131296280;
 			
 			// aapt resource value: 0x7f090017
-			public const int tvFullname = 2131296279;
+			public const int tvEmail = 2131296279;
+			
+			// aapt resource value: 0x7f090016
+			public const int tvFullname = 2131296278;
 			
 			// aapt resource value: 0x7f09000b
 			public const int tvPassword = 2131296267;
@@ -319,10 +316,7 @@ namespace iBeaconPracticeApp
 			public const int product_row = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int RadioGroup = 2130903043;
-			
-			// aapt resource value: 0x7f030004
-			public const int Register = 2130903044;
+			public const int Register = 2130903043;
 			
 			static Layout()
 			{

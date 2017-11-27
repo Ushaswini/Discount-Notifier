@@ -748,6 +748,38 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "Edit region with id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"RegionId\":5,\n\"RegionName\":\"Library edited\",\n\"BeaconId\":\"5ab\",\n\"StoreKeeperName\":\"Librarian\"\n}"
+				},
+				"url": {
+					"raw": "http://discountnotifier1.azurewebsites.net/api/Regions/5",
+					"protocol": "http",
+					"host": [
+						"discountnotifier1",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"Regions",
+						"5"
+					]
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

@@ -376,11 +376,7 @@ namespace DiscountNotifier.Controllers
 
                 // Throw a new DbEntityValidationException with the improved exception message.
                 throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
-            }
-            
-
-           
-
+            }  
             return Ok();
         }
 

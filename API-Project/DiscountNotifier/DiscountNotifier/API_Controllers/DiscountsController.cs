@@ -21,7 +21,8 @@ namespace DiscountNotifier.Controllers
     [RoutePrefix("api/Discounts")]
     public class DiscountsController : ApiController
     {
-        public static String AUTH_KEY_FCM = "Your api key";
+        public static String APPLICATION_ID = "AIzaSyBz8_qqXaVpZqj1B0FJJy1cemcXJmAUA7s";
+        public static String SENDER_ID = "1008556843671";
         public static String API_URL_FCM = "https://fcm.googleapis.com/fcm/send";
 
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -150,13 +151,7 @@ namespace DiscountNotifier.Controllers
 
                 };
                 if (deviceIds.Count > 0)
-                {
-                    
-                    var applicationID = "AIzaSyBz8_qqXaVpZqj1B0FJJy1cemcXJmAUA7s";
-                    // applicationID means google Api key 
-                    var SENDER_ID = "1008556843671";
-                    // SENDER_ID is nothing but your ProjectID (from API Console- google code)  
-
+                { 
                     string serializedNotification = JsonConvert.SerializeObject(notification);
 
                     WebRequest tRequest;
@@ -167,7 +162,7 @@ namespace DiscountNotifier.Controllers
 
                     tRequest.ContentType = " application/json";
 
-                    tRequest.Headers.Add(string.Format("Authorization: key={0}", applicationID));
+                    tRequest.Headers.Add(string.Format("Authorization: key={0}", APPLICATION_ID));
 
                     tRequest.Headers.Add(string.Format("Sender: id={0}", SENDER_ID));
 
@@ -188,7 +183,7 @@ namespace DiscountNotifier.Controllers
             }
             catch (Exception e)
             {
-
+                Console.Write(e.Message);
             }
         }
 

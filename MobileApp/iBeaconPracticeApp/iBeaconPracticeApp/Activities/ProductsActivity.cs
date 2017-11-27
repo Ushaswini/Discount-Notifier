@@ -143,7 +143,7 @@ namespace iBeaconPracticeApp
 
                     if (result.IsSuccessStatusCode)
                     {
-                        Toast.MakeText(this, "", ToastLength.Short).Show();
+                        Toast.MakeText(this, "Updated favorite region", ToastLength.Short).Show();
                         prefEditor.PutInt(Constants.REGIONID, regionId);
                         prefEditor.Apply();
 
@@ -172,6 +172,8 @@ namespace iBeaconPracticeApp
             builder.SetNegativeButton("Cancel", (sender, e) => { });
 
             string[] regions = Regions.Select(i => i.ToString()).ToArray();
+
+            
             int favId = prefs.GetInt(Constants.REGIONID, 0);
             var reg = Regions.Where(r => r.RegionId.Equals(favId)).FirstOrDefault();
             int index = Regions.IndexOf(reg);
@@ -185,8 +187,8 @@ namespace iBeaconPracticeApp
             AlertDialog dialog = builder.Create();
             dialog.Show();
         }
-
        
+
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
