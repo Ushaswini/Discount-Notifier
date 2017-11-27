@@ -1,0 +1,18 @@
+.callout-dark {
+	padding: 30px;
+	color: #fff;
+	background-color: #252525;
+}
+
+.callout-dark h1,
+h2,
+h3,
+h4 {
+	font-weight: 300;
+	line-height: 1.4;
+}
+
+.callout-dark p {
+	color: #B1B1B1;
+	font-size: 17px;
+}
